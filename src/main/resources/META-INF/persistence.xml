@@ -3,9 +3,6 @@
   <persistence-unit name="aoz_jdbc" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>jdbc/aoc</jta-data-source>
-    <class>kz.aoz.entity.Parse</class>
-    <class>kz.aoz.entity.Providers</class>
-    <class>kz.aoz.entity.Products</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

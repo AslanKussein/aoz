@@ -22,8 +22,7 @@ import java.util.Date;
     @NamedQuery(name = "Parse.findAll", query = "SELECT p FROM Parse p")
     , @NamedQuery(name = "Parse.findById", query = "SELECT p FROM Parse p WHERE p.id = :id")
     , @NamedQuery(name = "Parse.findByProductsId", query = "SELECT p FROM Parse p WHERE p.productsId = :productsId")
-    , @NamedQuery(name = "Parse.findByProdCount", query = "SELECT p FROM Parse p WHERE p.prodCount = :prodCount")
-    , @NamedQuery(name = "Parse.findByPrPrice", query = "SELECT p FROM Parse p WHERE p.prPrice = :prPrice")})
+})
 public class Parse implements Serializable {
 
     @Basic(optional = false)

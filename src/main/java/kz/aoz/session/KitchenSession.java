@@ -26,7 +26,7 @@ import static kz.aoz.wrapper.Wrapper.wrapToGsonProductsList;
  * @author a.amanzhol
  */
 @Stateless
-public class KitchenSession extends Utx {
+public class KitchenSession{
 
 
     private static final Logger logger = Logger.getLogger(KitchenSession.class);

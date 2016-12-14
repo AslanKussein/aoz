@@ -28,7 +28,7 @@
 }
 }
 %>
-    console.log("roles",roles)
+    console.log("roles", roles)
 
 
 </script>
@@ -69,7 +69,15 @@
             <ul class="nav navbar-nav">
 
                 <li><a href="/aoz"><span class="glyphicon glyphicon-home"></span></a></li>
-                <li><a href="/aoz/pages/users.jsp">Администрирование</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span>Администрирование</span><span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" id="mapZhournals">
+                        <li><a href="/aoz/pages/users.jsp">Пользователи</a></li>
+                        <li><a href="/app/pages/emailattrs.jsp">Параметры почты</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="/aoz/pages/import.jsp">Импорт</a></li>
 
             </ul>

@@ -249,4 +249,39 @@ public class Wrapper {
         }
         return null;
     }
+
+
+    public static GsonMsgTemplate wrapToGsonMsgTemplate(MsgTemplate obj) {
+        GsonMsgTemplate gson = new GsonMsgTemplate();
+        if (obj != null) {
+            gson.setId(obj.getId());
+            gson.setCode(obj.getCode());
+            gson.setTemplate(obj.getTemplate());
+            gson.setTitle(obj.getTitle());
+        }
+        return gson;
+    }
+
+    public static MsgTemplate wrapToMsgTemplate(GsonMsgTemplate obj) {
+        MsgTemplate template = new MsgTemplate();
+        template.setId(obj.getId());
+        template.setTitle(obj.getTitle());
+        template.setTemplate(obj.getTemplate());
+        template.setCode(obj.getCode());
+        return template;
+    }
+
+
+    public static GsonEmailDetail wrapToGsonEmailDetail(EmailDetail obj) {
+        GsonEmailDetail gson = new GsonEmailDetail();
+        if (obj != null) {
+            gson.setId(obj.getId());
+            gson.setHost(obj.getHost());
+            gson.setPort(obj.getPort());
+            gson.setPassword("****");
+            gson.setUsername(obj.getUsername());
+            gson.setType(obj.getType());
+        }
+        return gson;
+    }
 }

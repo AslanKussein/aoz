@@ -629,3 +629,9 @@ ul{
     font-size: 18px;
     color: red;
 }
+
+.emailattrs_mainlayout{
+    width:720px;
+    padding:10px;
+    margin:0 auto;
+}

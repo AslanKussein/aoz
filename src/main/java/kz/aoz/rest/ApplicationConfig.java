@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(kz.aoz.rest.ImportResource.class);
         resources.add(kz.aoz.rest.KitchenResource.class);
         resources.add(kz.aoz.rest.UserResource.class);
+        resources.add(kz.aoz.rest.MailResource.class);
     }
 
 }

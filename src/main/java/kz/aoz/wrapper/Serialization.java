@@ -6,10 +6,7 @@
 package kz.aoz.wrapper;
 
 import com.google.gson.Gson;
-import kz.aoz.gson.GsonDics;
-import kz.aoz.gson.GsonDicsId;
-import kz.aoz.gson.GsonImportTov;
-import kz.aoz.gson.GsonUserDetail;
+import kz.aoz.gson.*;
 
 /**
  *
@@ -35,5 +32,21 @@ public class Serialization {
     public static GsonDicsId wrapToGsonDicsIdByJsonString(String json) {
         Gson gson = new Gson();
         return gson.fromJson(json, GsonDicsId.class);
+    }
+
+
+    public static GsonEmailDetail wrapToGsonEmailDetailByJsonString(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, GsonEmailDetail.class);
+    }
+
+    public static GsonEmail wrapToGsonEmailByJsonString(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, GsonEmail.class);
+    }
+
+    public static GsonMsgTemplate wrapToGsonMsgTemplateByJsonString(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, GsonMsgTemplate.class);
     }
 }
