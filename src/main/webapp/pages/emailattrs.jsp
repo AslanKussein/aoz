@@ -34,7 +34,7 @@
 <div class="pagetitle">
     <ul class="breadcrumbs">
         <li><a href="/aoz/">Главная страница</a></li>
-        <li class="current"><a>Справочник поставщиков</a></li>
+        <li class="current"><a>Параметры почты</a></li>
     </ul>
 </div>
 <div class="mywrapper">
