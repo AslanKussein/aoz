@@ -112,7 +112,7 @@ webix.ready(function () {
 });
 
 function getContent() {
-    get_ajax('/aoz/ws/mail/getContent', 'GET', {type: "smtp"}, function (gson) {
+    get_ajax('/aoz/wr/mail/getContent', 'GET', {type: "smtp"}, function (gson) {
         if (gson) {
             var mainForm = $$('mainForm');
             mainForm.parse(gson.gsonEmailDetail);
@@ -125,7 +125,7 @@ function getContent() {
 function saveAttrs(form) {
     if (form.validate()) {
         var json = JSON.stringify(form.getValues(), null, 1);
-        get_ajax('/aoz/ws/mail/saveAttrs', 'POST', json, function (gson) {
+        get_ajax('/aoz/wr/mail/saveAttrs', 'POST', json, function (gson) {
             if (!gson.result) {
                 notifyMessage('danger', 'Ошибка! ', gson.message);
                 return;
@@ -310,7 +310,7 @@ function testMailSubmit(me, form) {
     if (form.validate()) {
         me.disable();
         var json = JSON.stringify(form.getValues(), null, 1);
-        get_ajax('/aoz/ws/mail/testMailSubmit', 'POST', json, function (gson) {
+        get_ajax('/aoz/wr/mail/testMailSubmit', 'POST', json, function (gson) {
             me.enable();
             if (!gson || !gson.result) {
                 notifyMessage('danger', 'Ошибка! ', gson.message);
@@ -340,7 +340,7 @@ function templateWinSubmit(me, form) {
         var json = JSON.stringify(data, null, 1);
         $$("templateTable").parse(json);
         $$("templateTable").refresh();
-        get_ajax('/aoz/ws/mail/saveTemplate', 'POST', json, function (gson) {
+        get_ajax('/aoz/wr/mail/saveTemplate', 'POST', json, function (gson) {
             me.enable();
             if (!gson || !gson.result) {
                 notifyMessage('danger', 'Ошибка! ', gson.message);

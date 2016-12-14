@@ -34,7 +34,7 @@ public class MailSession  extends Utx {
 
     private static final Logger logger = Logger.getLogger(MailSession.class);
 
-    @PersistenceContext(unitName = "kz.gcvp_xdoc_war_v1PU")
+    @PersistenceContext(unitName = "aoz_jdbc")
     private EntityManager em;
 
     public boolean sendMail(String messageId) {
