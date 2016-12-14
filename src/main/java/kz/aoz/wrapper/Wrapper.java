@@ -166,9 +166,6 @@ public class Wrapper {
         return null;
     }
 
-
-
-
     public static GsonUnit wrapToGsonUnit(Unit obj) {
         if (obj != null) {
             GsonUnit gson = new GsonUnit();
@@ -216,7 +213,6 @@ public class Wrapper {
             if (obj.getUnitCode() != null) {
                 gson.setUnit(obj.getUnitCode().getName());
             }
-            gson.setProductCount(obj.getProdCount());
             gson.setPrice(obj.getPrPrice());
             gson.setImportDate(dateToString(obj.getCurrentDt()));
             gson.setCompanyName(obj.getProvidersId().getName());
