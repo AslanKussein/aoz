@@ -36,6 +36,7 @@ public class AppSession extends Utx {
     @PersistenceContext(unitName = "aoz_jdbc")
     private EntityManager em;
 
+
     private static final int PER_DEF_START = 0;
     private static final int PER_DEF_COUNT = 30;
 
