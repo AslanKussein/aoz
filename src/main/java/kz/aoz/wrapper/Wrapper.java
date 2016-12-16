@@ -18,6 +18,7 @@ public class Wrapper {
         if (user != null) {
             GsonUsers gson = new GsonUsers();
             gson.setuName(user.getuName());
+            gson.setUserDetail(wrapToGsonUserDetail(user.getUserDetail()));
             return gson;
         }
         return null;
@@ -38,6 +39,7 @@ public class Wrapper {
             gson.setFirstname(user.getFirstname());
             gson.setLastname(user.getLastname());
             gson.setMiddlename(user.getMiddlename());
+            gson.setEmail(user.getEmail());
             gson.setLocked(user.getLocked());
             return gson;
         }
@@ -51,6 +53,7 @@ public class Wrapper {
             userDetail.setFirstname(gson.getFirstname());
             userDetail.setLastname(gson.getLastname());
             userDetail.setMiddlename(gson.getMiddlename());
+            userDetail.setEmail(gson.getEmail());
             userDetail.setLocked(gson.getLocked() == null ? 0 : gson.getLocked());
             return userDetail;
         }

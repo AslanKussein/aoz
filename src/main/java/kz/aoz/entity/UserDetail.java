@@ -36,6 +36,9 @@ public class UserDetail implements Serializable {
     @Size(max = 200)
     @Column(name = "MIDDLENAME")
     private String middlename;
+    @Size(max = 200)
+    @Column(name = "EMAIL")
+    private String email;
     @Column(name = "LOCKED")
     private Integer locked;
     @Id
@@ -84,5 +87,13 @@ public class UserDetail implements Serializable {
 
     public void setuName(Users uName) {
         this.uName = uName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

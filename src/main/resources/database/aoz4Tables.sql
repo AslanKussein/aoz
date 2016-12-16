@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 16 2016 г., 18:54
+-- Время создания: Дек 16 2016 г., 19:52
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.9
 
@@ -75,7 +75,6 @@ CREATE TABLE `groupmembers` (
 
 INSERT INTO `groupmembers` (`G_NAME`, `G_MEMBER`, `ID`) VALUES
 ('kitchen_role', 'kitchen', 2),
-('admin_role', 'admin', 7),
 ('admin_role', 'weblogic456', 72),
 ('kitchen_role', 'weblogic123', 75),
 ('kitchen_role', 'asd', 76),
@@ -86,7 +85,8 @@ INSERT INTO `groupmembers` (`G_NAME`, `G_MEMBER`, `ID`) VALUES
 ('kitchen_role', '12121212', 83),
 ('kitchen_role', '123456', 85),
 ('kitchen_role', 'mysql', 86),
-('admin_role', 'mysql', 87);
+('admin_role', 'mysql', 87),
+('admin_role', 'admin', 88);
 
 -- --------------------------------------------------------
 
@@ -1675,6 +1675,7 @@ CREATE TABLE `user_detail` (
   `FIRSTNAME` varchar(255) DEFAULT NULL,
   `LASTNAME` varchar(255) DEFAULT NULL,
   `MIDDLENAME` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) NOT NULL,
   `LOCKED` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1682,11 +1683,11 @@ CREATE TABLE `user_detail` (
 -- Дамп данных таблицы `user_detail`
 --
 
-INSERT INTO `user_detail` (`U_NAME`, `FIRSTNAME`, `LASTNAME`, `MIDDLENAME`, `LOCKED`) VALUES
-('admin', 'asd', 'asd', 'asdasd', 0),
-('kitchen', 'кухня', 'кухня', 'кухня', 0),
-('mysql', 'Test', 'Test', 'Test', 0),
-('weblogic', '????asdsa', '???dasd', '', 1);
+INSERT INTO `user_detail` (`U_NAME`, `FIRSTNAME`, `LASTNAME`, `MIDDLENAME`, `EMAIL`, `LOCKED`) VALUES
+('admin', 'asd', 'asd', 'asdasd', 'abzal_amanzhol_94@mail.ru', 0),
+('kitchen', 'кухня', 'кухня', 'кухня', '', 0),
+('mysql', 'Test', 'Test', 'Test', '', 0),
+('weblogic', '????asdsa', '???dasd', '', '', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -1784,7 +1785,7 @@ ALTER TABLE `user_detail`
 -- AUTO_INCREMENT для таблицы `groupmembers`
 --
 ALTER TABLE `groupmembers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --

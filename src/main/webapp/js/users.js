@@ -23,6 +23,7 @@ function init() {
                             {id: "firstname", header: "Имя", fillspace:1},
                             {id: "lastname", header: "Фамилия", fillspace:1},
                             {id: "middlename", header: "Отчество", fillspace:1},
+                            {id: "email", header: "Почта", fillspace:1},
                             {
                                 header: " ",
                                 id: "block",
@@ -233,6 +234,11 @@ function editUserFormWindow(gson) {
                             label: "Отчество",
                             view: "text",
                             name: "middlename"
+                        },
+                        {
+                            label: "Почта",
+                            view: "text",
+                            name: "email"
                         },
                         {height: 10}, 
                         {

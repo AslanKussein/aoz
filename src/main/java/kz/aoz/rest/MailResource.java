@@ -68,8 +68,8 @@ public class MailResource {
     @GET
     @Produces("application/json")
     @Path("getContent")
-    public String getContent(@QueryParam("type") String type) {
-        return objectToJson(mailSession.getContent(type));
+    public String getContent() {
+        return objectToJson(mailSession.getContent());
     }
 
 }

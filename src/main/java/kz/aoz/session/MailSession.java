@@ -45,7 +45,8 @@ public class MailSession  extends Utx {
                     .setParameter("id", emailMessage.getIdTemplate())));
 
             GsonMsgTemplate newTemplate = setTemplateAttr(msgTemplate, emailMessage.getuName());
-            res = sendSSL(getEmailDetail("smtp"), "email", newTemplate.getTitle(), newTemplate.getTemplate());
+            res = sendSSL(getEmailDetail(), emailMessage.getuName().getUserDetail().getEmail()
+                    , newTemplate.getTitle(), newTemplate.getTemplate());
             emailMessage.setState(1);
         } catch (MessagingException mEx) {
             mEx.printStackTrace();
@@ -78,8 +79,8 @@ public class MailSession  extends Utx {
     }
 
 
-    private EmailDetail getEmailDetail(String type) {
-        return (EmailDetail) getSingleResultOrNull(em.createNamedQuery("EmailDetail.findByType").setParameter("type", type));
+    private EmailDetail getEmailDetail() {
+        return (EmailDetail) getSingleResultOrNull(em.createNamedQuery("EmailDetail.findAll"));
     }
 
     private GsonMsgTemplate setTemplateAttr(GsonMsgTemplate template, Users user) {
@@ -112,7 +113,7 @@ public class MailSession  extends Utx {
 
     public GsonResult testMailSubmit(GsonEmail gson) {
         try {
-            sendSSL(getEmailDetail("smtp"), gson.getUsername(), gson.getTitle(), gson.getText());
+            sendSSL(getEmailDetail(), gson.getUsername(), gson.getTitle(), gson.getText());
             return getResultGson(true, null);
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -133,9 +134,9 @@ public class MailSession  extends Utx {
         }
     }
 
-    public GsonEmailDetailContent getContent(String type) {
+    public GsonEmailDetailContent getContent() {
         GsonEmailDetailContent c = new GsonEmailDetailContent();
-        GsonEmailDetail gsonEmailDetail = wrapToGsonEmailDetail(getEmailDetail("smtp"));
+        GsonEmailDetail gsonEmailDetail = wrapToGsonEmailDetail(getEmailDetail());
         List<MsgTemplate> msgTemplateList = em.createNamedQuery("MsgTemplate.findAll").getResultList();
         c.setGsonEmailDetail(gsonEmailDetail);
         c.setMsgTemplateList(msgTemplateList);

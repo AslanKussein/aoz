@@ -4,6 +4,7 @@ public class GsonUsers {
     private String uName;    
     private String uPassword;
     private String uDescription;
+    private GsonUserDetail userDetail;
 
     public String getuName() {
         return uName;
@@ -27,5 +28,13 @@ public class GsonUsers {
 
     public void setuDescription(String uDescription) {
         this.uDescription = uDescription;
-    }    
+    }
+
+    public GsonUserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(GsonUserDetail userDetail) {
+        this.userDetail = userDetail;
+    }
 }

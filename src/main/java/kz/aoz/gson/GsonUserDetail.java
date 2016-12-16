@@ -8,6 +8,7 @@ public class GsonUserDetail {
     private String firstname;
     private String lastname;
     private String middlename;
+    private String email;
     private Integer locked;
     private List<GsonGroupmembers> roles;
 
@@ -58,5 +59,13 @@ public class GsonUserDetail {
 
     public void setLocked(Integer locked) {
         this.locked = locked;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
