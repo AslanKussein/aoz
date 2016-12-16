@@ -74,7 +74,7 @@
                         <span>Администрирование</span><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" id="mapZhournals">
                         <li><a href="/aoz/pages/users.jsp">Пользователи</a></li>
-                        <li><a href="/app/pages/emailattrs.jsp">Параметры почты</a></li>
+                        <li><a href="/aoz/pages/emailattrs.jsp">Параметры почты</a></li>
                     </ul>
                 </li>
 

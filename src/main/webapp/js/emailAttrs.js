@@ -14,18 +14,18 @@ webix.ready(function () {
                     {view: "label", label: "Параметры почты"},
                     {
                         view: "icon", icon: "envelope-o", css: "buttonIcon", click: function () {
-                            testAttrsWin($$('mainForm'));
-                        }
+                        testAttrsWin($$('mainForm'));
+                    }
                     },
                     {
                         view: "icon", icon: "floppy-o", css: "buttonIcon", click: function () {
-                            saveAttrs($$('mainForm'));
-                        }
+                        saveAttrs($$('mainForm'));
+                    }
                     },
                     {
                         view: "icon", icon: "file-o", css: "buttonIcon", click: function () {
-                            $$('mainForm').clear();
-                        }
+                        $$('mainForm').clear();
+                    }
                     }
                 ]
             },
@@ -39,11 +39,13 @@ webix.ready(function () {
                     {view: "text", type: "password", name: "password", label: "Пароль", required: true},
                     {view: "text", name: "host", label: "Хост", required: true},
                     {view: "text", name: "port", label: "Порт", required: true},
-                    {view: "richselect", name: "type", label: "Протокол", required: true, options: [
-                            {id: "smtp", value: "SMTP"},
-                            {id: "pop3", value: "POP3"},
-                            {id: "imap", value: "IMAP"}
-                        ]},
+                    {
+                        view: "richselect", name: "type", label: "Протокол", required: true, options: [
+                        {id: "smtp", value: "SMTP"},
+                        {id: "pop3", value: "POP3"},
+                        {id: "imap", value: "IMAP"}
+                    ]
+                    },
                     {height: 15}
 
                 ], elementsConfig: {labelAlign: "right", labelWidth: 200}
@@ -127,11 +129,11 @@ function saveAttrs(form) {
         var json = JSON.stringify(form.getValues(), null, 1);
         get_ajax('/aoz/wr/mail/saveAttrs', 'POST', json, function (gson) {
             if (!gson.result) {
-                notifyMessage('danger', 'Ошибка! ', gson.message);
+                notifyMessage('Ошибка! ', gson.message, 'danger');
                 return;
             }
 
-            notifyMessage('info', 'Редактирование! ', 'Сведения сохранены.');
+            notifyMessage('Редактирование! ', 'Сведения сохранены.', 'info');
         });
     }
 }
@@ -159,8 +161,8 @@ function testAttrsWin() {
                         cols: [
                             {
                                 view: "icon", icon: "fa fa-paper-plane-o", css: "buttonIcon", click: function () {
-                                    testMailSubmit(this, $$("testMailForm"));
-                                }
+                                testMailSubmit(this, $$("testMailForm"));
+                            }
                             }, {
                                 view: "icon", icon: "fa fa-times", css: "buttonIcon", click: function () {
                                     this.getTopParentView().close();
@@ -218,14 +220,14 @@ function editTemplateWin() {
                         cols: [
                             {
                                 view: "icon", icon: "floppy-o", css: "buttonIcon", click: function () {
-                                    templateWinSubmit(this, $$("templateForm"));
-                                }
+                                templateWinSubmit(this, $$("templateForm"));
+                            }
                             },
                             {
                                 view: "icon", icon: "fa fa-times", css: "buttonIcon", click: function () {
-                                    this.getTopParentView().close();
-                                    window.onscroll = null;
-                                }
+                                this.getTopParentView().close();
+                                window.onscroll = null;
+                            }
                             }
                         ]
                     }
@@ -313,11 +315,11 @@ function testMailSubmit(me, form) {
         get_ajax('/aoz/wr/mail/testMailSubmit', 'POST', json, function (gson) {
             me.enable();
             if (!gson || !gson.result) {
-                notifyMessage('danger', 'Ошибка! ', gson.message);
+                notifyMessage('Ошибка! ', gson.message, 'danger');
                 return;
             }
 
-            notifyMessage('info', 'Информация!', 'Сообщение успешно отправлено!');
+            notifyMessage('Информация!', 'Сообщение успешно отправлено!', 'info');
         });
     }
 }
@@ -326,15 +328,15 @@ function testMailSubmit(me, form) {
 function templateWinSubmit(me, form) {
     if (form.validate()) {
         var data = form.getValues();
-        if(isNullOrEmpty(data.titleRus) || isNullOrEmpty(data.templateRus)){
+        if (isNullOrEmpty(data.titleRus) || isNullOrEmpty(data.templateRus)) {
             $$('templateTab').setValue('templateTabRus');
             if (!form.validate())
-                return ;
+                return;
         }
-        if(isNullOrEmpty(data.titleKaz) || isNullOrEmpty(data.templateKaz)){
+        if (isNullOrEmpty(data.titleKaz) || isNullOrEmpty(data.templateKaz)) {
             $$('templateTab').setValue('templateTabKaz');
             if (!form.validate())
-                return ;
+                return;
         }
         me.disable();
         var json = JSON.stringify(data, null, 1);
@@ -343,11 +345,11 @@ function templateWinSubmit(me, form) {
         get_ajax('/aoz/wr/mail/saveTemplate', 'POST', json, function (gson) {
             me.enable();
             if (!gson || !gson.result) {
-                notifyMessage('danger', 'Ошибка! ', gson.message);
+                notifyMessage('Ошибка! ', gson.message, 'danger');
                 return;
             }
 
-            notifyMessage('info', 'Информация! ', 'Изменения сохранены!');
+            notifyMessage('Информация! ', 'Изменения сохранены!', 'info');
         });
     }
 }

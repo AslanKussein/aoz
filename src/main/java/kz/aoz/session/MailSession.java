@@ -115,10 +115,12 @@ public class MailSession  extends Utx {
             sendSSL(getEmailDetail("smtp"), gson.getUsername(), gson.getTitle(), gson.getText());
             return getResultGson(true, null);
         } catch (MessagingException e) {
-            return getResultGson(false, "Ошибка при отправке");
+            e.printStackTrace();
         } catch (Exception e) {
-            return getResultGson(false, "Ошибка при отправке");
+            e.printStackTrace();
         }
+
+        return getResultGson(false, "Ошибка при отправке");
     }
 
     public GsonResult saveTemplate(GsonMsgTemplate gson) {
