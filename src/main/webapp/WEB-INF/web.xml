@@ -11,7 +11,7 @@
     <error-page>
         <!-- Forbidden directory listing -->
         <error-code>403</error-code>
-        <location>/login.jsp</location>
+        <location>/err403.jsp</location>
     </error-page>
     <error-page>
         <!-- Forbidden directory listing -->
@@ -31,21 +31,28 @@
     <security-role>
         <role-name>kitchen_role</role-name>
     </security-role>
-    <security-role>
-        <role-name>EMAKET_FRONT</role-name>
-    </security-role>
     <security-constraint>
-        <display-name>Constraint-0</display-name>
+        <display-name>Constraint-admin</display-name>
         <web-resource-collection>
-            <web-resource-name>Constraint-0</web-resource-name>
-            <url-pattern>/pages/*</url-pattern>
+            <web-resource-name>Constraint-admin</web-resource-name>
+            <url-pattern>/pages/admin/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin_role</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Constraint-kitchen</display-name>
+        <web-resource-collection>
+            <web-resource-name>Constraint-kitchen</web-resource-name>
+            <url-pattern>/pages/kitchen/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
             <role-name>kitchen_role</role-name>
-            <role-name>EMAKET_FRONT</role-name>
         </auth-constraint>
     </security-constraint>
 </web-app>

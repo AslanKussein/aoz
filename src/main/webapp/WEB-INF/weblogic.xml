@@ -5,10 +5,6 @@
     <debug>true</debug>
   </jsp-descriptor>
   <security-role-assignment>
-    <role-name>EMAKET_FRONT</role-name>
-    <principal-name>EMAKET_FRONT</principal-name>
-  </security-role-assignment>
-  <security-role-assignment>
     <role-name>admin_role</role-name>
     <principal-name>admin_role</principal-name>
   </security-role-assignment>

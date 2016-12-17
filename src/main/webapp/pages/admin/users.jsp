@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Пользователи</title>
-    <link rel="icon" type="image/ico" sizes="16x16" href="../images/favicon.ico">
+    <link rel="icon" type="image/ico" sizes="16x16" href="../../images/favicon.ico">
 
 
     <script src="/aoz/plugin/jquery/jquery-1.11.3.min.js" type="text/javascript"></script>

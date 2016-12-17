@@ -73,12 +73,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span>Администрирование</span><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" id="mapZhournals">
-                        <li><a href="/aoz/pages/users.jsp">Пользователи</a></li>
-                        <li><a href="/aoz/pages/emailattrs.jsp">Параметры почты</a></li>
+                        <li><a href="/aoz/pages/admin/users.jsp">Пользователи</a></li>
+                        <li><a href="/aoz/pages/admin/emailattrs.jsp">Параметры почты</a></li>
                     </ul>
                 </li>
 
-                <li><a href="/aoz/pages/import.jsp">Импорт</a></li>
+                <li><a href="/aoz/pages/admin/import.jsp">Импорт</a></li>
 
             </ul>
 
@@ -88,9 +88,9 @@
                         Справочники&nbsp;<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu pull-right" style="max-height: 407px;">
-                        <li><a href="/aoz/pages/importov.jsp">Справочник товаров</a></li>
-                        <li><a href="/aoz/pages/unit.jsp">Справочник ед. измерении</a></li>
-                        <li><a href="/aoz/pages/providers.jsp">Справочник Поставщиков</a></li>
+                        <li><a href="/aoz/pages/admin/importov.jsp">Справочник товаров</a></li>
+                        <li><a href="/aoz/pages/admin/unit.jsp">Справочник ед. измерении</a></li>
+                        <li><a href="/aoz/pages/admin/providers.jsp">Справочник Поставщиков</a></li>
                     </ul>
                 </li>
             </ul>
