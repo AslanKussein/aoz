@@ -5,15 +5,15 @@ package kz.aoz.gson;
  */
 public class GsonOrders {
 
-    private Long id;
+    private String id;
     private String begDate;
     private String endDate;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

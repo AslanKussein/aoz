@@ -189,120 +189,136 @@ function editOrderLayotCreate(id) {
     var layout = webix.ui({
         id: "editOrderLayot",
         container: "editOrderContainer",
-        cols: [
+        rows: [
             {
-                autowidth: true,
-                minWidth: 450,
-                margin: 10,
-                rows: [
+                view: "toolbar",
+                elements: [
+                    {},
                     {
-                        view: "treetable",
-                        select: 'row',
-                        scroll: "y",
-                        id: "allPriceTree",
-                        autoheight: true,
-                        minHeight: 500,
-                        columns: [
-                            {
-                                id: "id",
-                                header:" ",
-                                width: 10,
-                                hidden:true
-                            },{
-                                id: "name",
-                                header: ["Наименование", {content: "textFilter"}],
-                                sort: "string",
-                                fillspace: 1,
-                                template: "{common.space()} {common.icon()} {common.folder()} #name#"
-                            },
-                            {
-                                header: " ",
-                                css: "nonePadding",
-                                width: 30,
-                                id: "angle"
-                            }
-                        ],
-                        scheme: {
-                            $init: function (obj) {
-                                if (isLastChild(obj.code) && !isNullOrEmpty(obj.parentId)) {
-                                    obj.angle = "<span class='angleRight fa fa-angle-right'  ></span>"
-                                } else {
-                                    obj.angle = "";
-                                }
-                            }
-                        },
-                        onClick: {
-                            angleRight: function (e, item, cell) {
-                                var id = item.row;
-                                var obj = this.getItem(id);
-                                angleRightClick(obj, id)
-                            }
+                        view: "icon",
+                        icon: "floppy-o",
+                        css: "buttonIconGreen",
+                        click: function () {
+                            saveSelectedProducts();
                         }
                     }
-                ]
-            }, {view: "resizer"},
+                ],
+                elementsConfig: {
+                    labelAlign: "right"
+                }
+            },
             {
-                autowidth: true,
-                minWidth: 450,
-                margin: 10,
-                rows: [
+                cols: [
                     {
-                        view: "treetable",
-                        select: 'row',
-                        scroll: "y",
-                        id: "selectPriceTree",
-                        autoheight: true,
-                        editable: true,
-                        minHeight: 500,
-                        columns: [
+                        autowidth: true,
+                        minWidth: 450,
+                        margin: 10,
+                        rows: [
                             {
-                                id: "id",
-                                header:" ",
-                                width: 10,
-                                hidden:true
-                            },
-                            {
-                                header: "<span class='angleLeft fa fa-angle-double-left' onclick='angleDoubleLeftClick()'></span>",
-                                css: "nonePadding",
-                                width: 30,
-                                template: "<span class='angleLeft fa fa-angle-left'  ></span>"
-                            },
-                            {
-                                id: "name",
-                                header: ["Наименование", {content: "textFilter"}],
-                                sort: "string",
-                                fillspace: 1,
-                                template: "{common.space()} {common.icon()} {common.folder()} #name#"
-                            },
-                            {
-                                id: "count",
-                                header: " ",
-                                width: 50,
-                                editor: "text",
-                                suggest: [
+                                view: "treetable",
+                                scroll: "y",
+                                id: "allPriceTree",
+                                autoheight: true,
+                                minHeight: 500,
+                                columns: [
                                     {
-                                        on: {
-                                            onChange: function (nV, oV) {
-                                                console.log(nV, oV)
-                                            }
+                                        id: "id",
+                                        header: " ",
+                                        width: 10,
+                                        hidden: true
+                                    }, {
+                                        id: "name",
+                                        header: ["Наименование", {content: "textFilter"}],
+                                        sort: "string",
+                                        fillspace: 1,
+                                        template: "{common.space()} {common.icon()} {common.folder()} #name#"
+                                    },
+                                    {
+                                        header: " ",
+                                        css: "nonePadding",
+                                        width: 30,
+                                        id: "angle"
+                                    }
+                                ],
+                                scheme: {
+                                    $init: function (obj) {
+                                        if (isLastChild(obj.code) && !isNullOrEmpty(obj.parentId)) {
+                                            obj.angle = "<span class='angleRight fa fa-angle-right'  ></span>"
+                                        } else {
+                                            obj.angle = "";
                                         }
                                     }
-                                ]
-                            },
+                                },
+                                onClick: {
+                                    angleRight: function (e, item, cell) {
+                                        var id = item.row;
+                                        var obj = this.getItem(id);
+                                        angleRightClick(obj, id)
+                                    }
+                                }
+                            }
+                        ]
+                    }, {view: "resizer"},
+                    {
+                        autowidth: true,
+                        minWidth: 450,
+                        margin: 10,
+                        rows: [
                             {
-                                header: " ",
-                                width: 30,
-                                template:"#unit.name#"
+                                view: "datatable",
+                                scroll: "y",
+                                id: "selectPriceTree",
+                                autoheight: true,
+                                editable: true,
+                                minHeight: 500,
+                                columns: [
+                                    {
+                                        id: "id",
+                                        header: " ",
+                                        width: 10,
+                                        hidden: true
+                                    },
+                                    {
+                                        header: "<span class='angleLeft fa fa-angle-double-left' onclick='angleDoubleLeftClick()'></span>",
+                                        css: "nonePadding",
+                                        width: 30,
+                                        template: "<span class='angleLeft fa fa-angle-left'  ></span>"
+                                    },
+                                    {
+                                        id: "name",
+                                        header: ["Наименование", {content: "textFilter"}],
+                                        sort: "string",
+                                        fillspace: 1,
+                                        template: "{common.space()} {common.icon()} {common.folder()} #name#"
+                                    },
+                                    {
+                                        id: "count",
+                                        header: " ",
+                                        width: 60,
+                                        editor: "text"
+                                    },
+                                    {
+                                        header: " ",
+                                        width: 40,
+                                        template: "#unit.name#"
+                                    }
+                                ],
+                                onClick: {
+                                    angleLeft: function (e, item, cell) {
+                                        console.log(e, item, cell);
+                                        var id = item.row;
+                                        var obj = this.getItem(id);
+                                        angleLeftClick(obj, id)
+                                    }
+                                },
+                                scheme: {
+                                    $init: function (obj) {
+                                        obj.$level = null;
+                                        obj.$count = null;
+                                    }
+                                }
                             }
-                        ],
-                        onClick: {
-                            angleLeft: function (e, item, cell) {
-                                console.log(e, item, cell);
-                                var id = item.row;
-                                var obj = this.getItem(id);
-                                angleLeftClick(obj, id)
-                            }
-                        }
+                        ]
                     }
                 ]
             }
@@ -318,10 +334,24 @@ function editOrderLayotCreate(id) {
 }
 
 function loadDataTree(id) {
-    get_ajax('/aoz/wr/kitchen/getVProductList', 'GET', {id: id}, function (gson) {
-        if (gson && gson.data) {
-            treeData = gson.data;
-            loadTreeData('allPriceTree', getTreeData(gson.data, 'code', 'parentId'));
+    get_ajax('/aoz/wr/kitchen/getKitchenTreeData', 'GET', {id: id}, function (gson) {
+        if (!gson || !gson.result) {
+            mainContainerShow();
+            messageBox('Ошибка', gson.message);
+            return;
+        }
+        if (gson.order) {
+            $$("ordersTable").parse(gson.order);
+        }
+
+        if (gson.vProductList) {
+            treeData = gson.vProductList.data;
+            loadTreeData('allPriceTree', getTreeData(treeData, 'code', 'parentId'));
+        }
+
+        if (gson.productList) {
+            data = gson.productList.data;
+            selectPriceTree.parse(data);
         }
     });
 }
@@ -349,11 +379,13 @@ function editOrder(item, id) {
 }
 
 function angleRightClick(item, id) {
+    console.log(item)
     allPriceTree.remove(id);
     selectPriceTree.parse(item);
 }
 
 function angleLeftClick(item, id) {
+    console.log(item)
     selectPriceTree.remove(id);
     allPriceTree.parse(item);
 }
@@ -361,3 +393,17 @@ function angleLeftClick(item, id) {
 function angleDoubleLeftClick() {
     console.log("angleDoubleLeftClick")
 }
+
+function saveSelectedProducts() {
+    selectPriceTree.eachRow(
+        function (row){
+            var obj = selectPriceTree.getItem(row);
+            if(isNullOrEmpty(obj.count)) {
+                console.log(obj.name,null)
+            }
+            console.log(obj)
+        }
+    )
+}
+
+//https://kaspi.kz/shop/checkout/orderConfirmation?orderId=63702421

@@ -45,9 +45,9 @@ public class KitchenResource {
 
     @GET
     @Produces("application/json")
-    @Path("getVProductList")
-    public String getVProductList(@QueryParam("id") Integer id) {
-        return objectToJson(kitchenSession.getVProductList( id));
+    @Path("getKitchenTreeData")
+    public String getKitchenTreeData(@QueryParam("id") String id) {
+        return objectToJson(kitchenSession.getKitchenTreeData(id));
     }
 
     @GET

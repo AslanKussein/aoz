@@ -21,30 +21,30 @@ public class OrderDetail {
     @Id
     @NotNull
     @Column(name = "ID")
-    private Long id;
+    private String id;
 
     @NotNull
     @Column(name = "order_id")
-    private Long orderId;
+    private String orderId;
 
     @NotNull
     @Column(name = "PRODUCT_ID")
     private String productId;
 
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

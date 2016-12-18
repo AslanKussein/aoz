@@ -21,22 +21,21 @@ public class Orders {
     @Id
     @NotNull
     @Column(name = "ID")
-    private Long id;
+    private String id;
 
     @NotNull
     @Column(name = "BEG_DATE")
     private Timestamp begDate;
 
-    @NotNull
     @Column(name = "END_DATE")
     private Timestamp endDate;
 
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
