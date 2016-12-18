@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 14 2016 г., 13:01
+-- Время создания: Дек 18 2016 г., 13:58
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.9
 
@@ -34,6 +34,13 @@ CREATE TABLE `email_detail` (
   `TYPE` varchar(55) NOT NULL,
   `PORT` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `email_detail`
+--
+
+INSERT INTO `email_detail` (`id`, `USERNAME`, `PASSWORD`, `HOST`, `TYPE`, `PORT`) VALUES
+('002553b4-ec51-4a6d-8a91-d92cc2f8d0df', 'kukanabiev99@gmail.com', 'T1ahYFB+a3kUEMhCFsYj/w==', 'smtp.gmail.com', 'smtp', 465);
 
 -- --------------------------------------------------------
 
@@ -68,7 +75,6 @@ CREATE TABLE `groupmembers` (
 
 INSERT INTO `groupmembers` (`G_NAME`, `G_MEMBER`, `ID`) VALUES
 ('kitchen_role', 'kitchen', 2),
-('admin_role', 'admin', 7),
 ('admin_role', 'weblogic456', 72),
 ('kitchen_role', 'weblogic123', 75),
 ('kitchen_role', 'asd', 76),
@@ -79,7 +85,8 @@ INSERT INTO `groupmembers` (`G_NAME`, `G_MEMBER`, `ID`) VALUES
 ('kitchen_role', '12121212', 83),
 ('kitchen_role', '123456', 85),
 ('kitchen_role', 'mysql', 86),
-('admin_role', 'mysql', 87);
+('admin_role', 'mysql', 87),
+('admin_role', 'admin', 88);
 
 -- --------------------------------------------------------
 
@@ -120,7 +127,7 @@ CREATE TABLE `msg_template` (
 --
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+  `id` varchar(55) NOT NULL,
   `beg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `end_date` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -130,8 +137,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `beg_date`, `end_date`) VALUES
-(1, '2016-12-11 09:40:11', '2016-12-04 23:14:19'),
-(2, '2016-12-11 09:40:04', NULL);
+('fb3200a2-97ed-493a-8c2b-408a638e81d3', '2016-12-17 17:57:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -140,9 +146,9 @@ INSERT INTO `orders` (`id`, `beg_date`, `end_date`) VALUES
 --
 
 CREATE TABLE `order_detail` (
-  `order_id` int(11) NOT NULL,
+  `order_id` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `product_id` varchar(55) CHARACTER SET utf8 NOT NULL,
-  `id` int(11) NOT NULL
+  `id` varchar(55) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -150,26 +156,7 @@ CREATE TABLE `order_detail` (
 --
 
 INSERT INTO `order_detail` (`order_id`, `product_id`, `id`) VALUES
-(1, '0035a9ef-f873-4510-87ff-b99e5e77845a', 3),
-(1, '0056efab-c389-4b85-8e48-de78533f5278', 4),
-(1, '00a520b4-027d-4015-92b0-b89220936d91', 5),
-(1, '03b6aa12-93b9-4b0e-8050-8da04d8c41c3', 6),
-(1, '0112ff2f-3431-4604-a0ae-01a935204429', 7),
-(1, '0147f7bd-54b4-4d1d-b280-510bcde06c11', 8),
-(1, '0147f7bd-54b4-4d1d-b280-510bcde06c11', 9),
-(1, '014c4567-c609-423c-87a8-3a4c4eb0bfec', 10),
-(1, '015e4506-f00b-4b99-9c21-8fbff8520e2b', 11),
-(1, '017b8cf7-4a84-4e3a-9044-cd86397492c5', 12),
-(1, '01b5ee03-421c-4a7f-82b7-92526a59a3d6', 13),
-(1, '01f0d139-f044-463b-bbf9-56edb895e938', 14),
-(1, '0291de23-7cce-47cc-b6c9-3fc32d153db8', 15),
-(1, '030634d8-dfc4-4f91-9dd5-8a6fb36061c0', 16),
-(1, '03501e4b-c9b9-45bf-9f41-3a0132575fee', 17),
-(1, '0374b60c-84b8-40fd-bd50-1d9672a87427', 18),
-(1, '03bcc89c-4c2f-4f4b-9e6c-3a34246a4184', 19),
-(1, '0400fcb2-2532-420a-96b1-892071c14a7b', 20),
-(1, '043c76ee-4213-4d08-85ef-d415fb865bd2', 21),
-(1, '04ea7064-70f2-44f1-a9e5-e9a223b9599f', 22);
+('fb3200a2-97ed-493a-8c2b-408a638e81d3', '00d1be59-eadd-4b3c-be92-b0490d3043d4', '00d1be59-eadd-4b3c-be92-b0490d3043d0');
 
 -- --------------------------------------------------------
 
@@ -1595,31 +1582,6 @@ INSERT INTO `products` (`ID`, `CODE`, `PARENT_CODE`, `NAME`, `UNIT_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `products1`
---
-
-CREATE TABLE `products1` (
-  `ID` varchar(222) NOT NULL,
-  `CODE` varchar(12) NOT NULL,
-  `PARENT_CODE` varchar(12) DEFAULT '',
-  `NAME` varchar(222) NOT NULL,
-  `unit_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `products1`
---
-
-INSERT INTO `products1` (`ID`, `CODE`, `PARENT_CODE`, `NAME`, `unit_id`) VALUES
-('18f3e38b-02af-40ff-8368-b71cd5f00e4f', '00000007513', NULL, 'Bakery&Pastry=Хлеб,кондитерск.изделия', NULL),
-('66f2e484-4966-4aa3-b8bd-cab36ee2542e', '00000007515', NULL, 'Bread black sweet', NULL),
-('828d3d91-21b7-4a3d-a25d-74c1986ea5b6', '00000007516', NULL, 'Bread borodinskiy', NULL),
-('ba6eaee4-b562-4ddc-93b1-0b2b20870a8e', '00000013261', '00000007516', 'Bread for hamburger=хлеб для гамбургеров', NULL),
-('cb610dca-352d-47e9-8f52-b62faaef3545', '00000007514', '00000007515', 'Bread=Хлеб', NULL);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `providers`
 --
 
@@ -1693,6 +1655,7 @@ CREATE TABLE `user_detail` (
   `FIRSTNAME` varchar(255) DEFAULT NULL,
   `LASTNAME` varchar(255) DEFAULT NULL,
   `MIDDLENAME` varchar(255) DEFAULT NULL,
+  `EMAIL` varchar(255) NOT NULL,
   `LOCKED` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1700,15 +1663,28 @@ CREATE TABLE `user_detail` (
 -- Дамп данных таблицы `user_detail`
 --
 
-INSERT INTO `user_detail` (`U_NAME`, `FIRSTNAME`, `LASTNAME`, `MIDDLENAME`, `LOCKED`) VALUES
-('admin', 'asd', 'asd', 'asdasd', 0),
-('kitchen', 'кухня', 'кухня', 'кухня', 0),
-('mysql', 'Test', 'Test', 'Test', 0),
-('weblogic', '????asdsa', '???dasd', '', 1);
+INSERT INTO `user_detail` (`U_NAME`, `FIRSTNAME`, `LASTNAME`, `MIDDLENAME`, `EMAIL`, `LOCKED`) VALUES
+('admin', 'asd', 'asd', 'asdasd', 'abzal_amanzhol_94@mail.ru', 0),
+('kitchen', 'кухня', 'кухня', 'кухня', '', 0),
+('mysql', 'Test', 'Test', 'Test', '', 0),
+('weblogic', '????asdsa', '???dasd', '', '', 1);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `email_detail`
+--
+ALTER TABLE `email_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Индексы таблицы `email_message`
+--
+ALTER TABLE `email_message`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Индексы таблицы `groupmembers`
@@ -1721,6 +1697,12 @@ ALTER TABLE `groupmembers`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`G_NAME`);
+
+--
+-- Индексы таблицы `msg_template`
+--
+ALTER TABLE `msg_template`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Индексы таблицы `orders`
@@ -1749,12 +1731,6 @@ ALTER TABLE `parse`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `products_ibfk_1` (`UNIT_ID`);
-
---
--- Индексы таблицы `products1`
---
-ALTER TABLE `products1`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Индексы таблицы `providers`
@@ -1789,22 +1765,12 @@ ALTER TABLE `user_detail`
 -- AUTO_INCREMENT для таблицы `groupmembers`
 --
 ALTER TABLE `groupmembers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
---
--- AUTO_INCREMENT для таблицы `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT для таблицы `order_detail`
---
-ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT для таблицы `providers`
 --
 ALTER TABLE `providers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
