@@ -36,10 +36,10 @@ public class UserSession {
         }
         return null;
     }
-    public  Users getUser(String uName) {
+
+    private Users getUser(String uName) {
         try {
-            Users user = (Users) getSingleResultOrNull(em.createNamedQuery("Users.findByUName").setParameter("uName", uName));
-            return user;
+            return (Users) getSingleResultOrNull(em.createNamedQuery("Users.findByUName").setParameter("uName", uName));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class UserSession {
             data.setData(wrapToGsonUserDetailList(list));
             data.setPos(start);
             Query q = em.createQuery(" SELECT count(u)  FROM UserDetail u ");
-            Long recordSize  = (Long) q.getSingleResult();
+            Long recordSize = (Long) q.getSingleResult();
             data.setTotal_count(recordSize.intValue());
 
         } catch (NoResultException e) {
@@ -74,7 +74,7 @@ public class UserSession {
         List<GsonGroupmembers> result;
         try {
             List<Groupmembers> list = em.createNamedQuery("Groupmembers.findByGMember")
-                    .setParameter("gMember",uName)
+                    .setParameter("gMember", uName)
                     .getResultList();
             result = wrapToGsonGroupmembersList(list);
         } catch (NoResultException e) {
@@ -83,8 +83,6 @@ public class UserSession {
 
         return result;
     }
-
-
 
     public GsonResult editUser(MultivaluedMap<String, String> formParams) {
         GsonUserDetail gsonUserDetail = wrapToGsonUserDetailByJsonString(formParams.getFirst("json"));
@@ -95,8 +93,8 @@ public class UserSession {
         Query q = em.createQuery("DELETE FROM Groupmembers g where g.groupmembersPK.gMember  = :gMember")
                 .setParameter("gMember", gsonUserDetail.getuName());
         q.executeUpdate();
-        List<Groupmembers> list= wrapToGroupmembersList(gsonUserDetail.getRoles(),gsonUserDetail.getuName());
-        for(Groupmembers g :list) {
+        List<Groupmembers> list = wrapToGroupmembersList(gsonUserDetail.getRoles(), gsonUserDetail.getuName());
+        for (Groupmembers g : list) {
             em.persist(g);
         }
         em.flush();

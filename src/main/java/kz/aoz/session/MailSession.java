@@ -48,8 +48,6 @@ public class MailSession  extends Utx {
             res = sendSSL(getEmailDetail(), emailMessage.getuName().getUserDetail().getEmail()
                     , newTemplate.getTitle(), newTemplate.getTemplate());
             emailMessage.setState(1);
-        } catch (MessagingException mEx) {
-            mEx.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,9 +113,7 @@ public class MailSession  extends Utx {
         try {
             sendSSL(getEmailDetail(), gson.getUsername(), gson.getTitle(), gson.getText());
             return getResultGson(true, null);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             e.printStackTrace();
         }
 

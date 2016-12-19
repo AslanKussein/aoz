@@ -30,9 +30,10 @@ import static kz.aoz.wrapper.Wrapper.wrapToGsonProductsList;
 /**
  * @author a.amanzhol
  */
+
+
 @Stateless
 public class KitchenSession {
-
 
     private static final Logger logger = Logger.getLogger(KitchenSession.class);
 
@@ -78,26 +79,19 @@ public class KitchenSession {
     }
 
 
-    public GsonDatatableData getVProductList(String id) {
+    private GsonDatatableData getVProductList(String id) {
 
         try {
-
-            StringBuilder query = new StringBuilder("SELECT p ");
-            StringBuilder countQuery = new StringBuilder("SELECT count(p) ");
-            StringBuilder sql = new StringBuilder(" FROM Products p where p.id not in (SELECT d.productId  FROM OrderDetail d ");
+            StringBuilder query = new StringBuilder("SELECT p FROM Products p where p.id not in (SELECT d.productId  FROM OrderDetail d ");
 
             if (id != null) {
-                sql.append("where d.orderId = ?1");
+                query.append("where d.orderId = ?1");
             }
-            sql.append(")");
-            query.append(sql.toString());
-            countQuery.append(sql.toString());
+            query.append(")");
             Query q = em.createQuery(query.toString());
 
-            Query cQuery = em.createQuery(countQuery.toString());
             if (id != null) {
                 q.setParameter(1, id);
-                cQuery.setParameter(1, id);
             }
 
             List<Products> list = q.getResultList();
@@ -113,26 +107,17 @@ public class KitchenSession {
     }
 
 
-    public GsonDatatableData getVSelectedProductList(String id) {
-
+    private GsonDatatableData getVSelectedProductList(String id) {
         try {
-
-            StringBuilder query = new StringBuilder("SELECT p ");
-            StringBuilder countQuery = new StringBuilder("SELECT count(p) ");
-            StringBuilder sql = new StringBuilder(" FROM Products p where p.id  in (SELECT d.productId  FROM OrderDetail d ");
-
+            StringBuilder query = new StringBuilder("SELECT p  FROM Products p where p.id  in (SELECT d.productId  FROM OrderDetail d ");
             if (id != null) {
-                sql.append("where d.orderId = ?1");
+                query.append(" where d.orderId = ?1");
             }
-            sql.append(")");
-            query.append(sql.toString());
-            countQuery.append(sql.toString());
+            query.append(")");
             Query q = em.createQuery(query.toString());
 
-            Query cQuery = em.createQuery(countQuery.toString());
             if (id != null) {
                 q.setParameter(1, id);
-                cQuery.setParameter(1, id);
             }
 
             List<Products> list = q.getResultList();

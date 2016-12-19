@@ -64,8 +64,7 @@ public class AuthServlet extends HttpServlet {
 
                 GsonUsers user = userSession.getGsonUser(j_username);
                 if (user != null) {
-                    if (user.getUserDetail()!=null && user.getUserDetail().getLocked() ==1) {
-
+                    if (user.getUserDetail() != null && user.getUserDetail().getLocked() == 1) {
                         out.print(getResultGsonString(false, "Пользователь заблокирован, обратитесь Администратору"));
                         return;
                     }
