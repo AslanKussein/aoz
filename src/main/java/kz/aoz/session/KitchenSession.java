@@ -47,7 +47,7 @@ public class KitchenSession {
 
         if (isNullOrEmpty(id)) {
             GsonResult gsonResult = createOrder();
-            if(gsonResult.getResult()) {
+            if (gsonResult.getResult()) {
                 gson.setResult(true);
                 gson.setOrder((GsonOrders) gsonResult.getMessage());
                 id = gson.getOrder().getId();
@@ -171,6 +171,7 @@ public class KitchenSession {
                 .setParameter(1, id));
         GsonDatatableData data = new GsonDatatableData();
         data.setPos(start);
+        if (countAll == null) countAll = 0L;
         data.setTotal_count(countAll.intValue());
         data.setData(wrapToGsonProductsList(list));
         return data;
@@ -192,6 +193,7 @@ public class KitchenSession {
 
         GsonDatatableData data = new GsonDatatableData();
         data.setPos(start);
+        if (countAll == null) countAll = 0L;
         data.setTotal_count(countAll.intValue());
         data.setData(wrapToGsonOrdersList(list));
         return data;
