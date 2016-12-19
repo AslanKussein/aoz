@@ -218,7 +218,6 @@ function editOrderLayotCreate(id) {
                                 view: "treetable",
                                 scroll: "y",
                                 id: "allPriceTree",
-                                autoheight: true,
                                 minHeight: 500,
                                 columns: [
                                     {
@@ -268,7 +267,6 @@ function editOrderLayotCreate(id) {
                                 view: "datatable",
                                 scroll: "y",
                                 id: "selectPriceTbl",
-                                autoheight: true,
                                 editable: true,
                                 minHeight: 500,
                                 columns: [
