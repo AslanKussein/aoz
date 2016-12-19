@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 var allPriceTree;
-var selectPriceTree;
+var selectPriceTbl;
 
 var treeData;
 
@@ -267,7 +267,7 @@ function editOrderLayotCreate(id) {
                             {
                                 view: "datatable",
                                 scroll: "y",
-                                id: "selectPriceTree",
+                                id: "selectPriceTbl",
                                 autoheight: true,
                                 editable: true,
                                 minHeight: 500,
@@ -303,6 +303,12 @@ function editOrderLayotCreate(id) {
                                         template: "#unit.name#"
                                     }
                                 ],
+                                rules: {
+                                    "count": webix.rules.isNotEmpty,
+                                    "count": function (value) {
+                                        return value > 0
+                                    }
+                                },
                                 onClick: {
                                     angleLeft: function (e, item, cell) {
                                         console.log(e, item, cell);
@@ -326,7 +332,7 @@ function editOrderLayotCreate(id) {
     });
 
     allPriceTree = $$("allPriceTree");
-    selectPriceTree = $$("selectPriceTree");
+    selectPriceTbl = $$("selectPriceTbl");
     webix.event(window, "resize", function () {
         layout.adjust();
     });
@@ -351,7 +357,7 @@ function loadDataTree(id) {
 
         if (gson.productList) {
             data = gson.productList.data;
-            selectPriceTree.parse(data);
+            selectPriceTbl.parse(data);
         }
     });
 }
@@ -381,12 +387,12 @@ function editOrder(item, id) {
 function angleRightClick(item, id) {
     console.log(item)
     allPriceTree.remove(id);
-    selectPriceTree.parse(item);
+    selectPriceTbl.parse(item);
 }
 
 function angleLeftClick(item, id) {
     console.log(item)
-    selectPriceTree.remove(id);
+    selectPriceTbl.remove(id);
     allPriceTree.parse(item);
 }
 
@@ -395,15 +401,15 @@ function angleDoubleLeftClick() {
 }
 
 function saveSelectedProducts() {
-    selectPriceTree.eachRow(
-        function (row){
-            var obj = selectPriceTree.getItem(row);
-            if(isNullOrEmpty(obj.count)) {
-                console.log(obj.name,null)
-            }
-            console.log(obj)
-        }
-    )
-}
 
-//https://kaspi.kz/shop/checkout/orderConfirmation?orderId=63702421
+    selectPriceTbl.validate()
+    /* selectPriceTbl.eachRow(
+     function (row) {
+     //var obj = selectPriceTbl.getItem(row);
+     /!*if (isNullOrEmpty(obj.count)) {
+     console.log(obj.name, null)
+     }
+     console.log(obj)*!/
+     }
+     )*/
+}
